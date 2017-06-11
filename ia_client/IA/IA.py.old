@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+## IA.py for zappy in /home/karraz_s/rendu/PSU_2015_zappy/ia_client
+## 
+## Made by stephane karraz
+## Login   <karraz_s@epitech.net>
+## 
+## Started on  Sat Jun 11 02:01:21 2016 stephane karraz
+## Last update Fri Jun 24 01:06:20 2016 stephane karraz
+##
+
+from random import *
+import time
+
+
+def level1(player):
+    player.launch_elevation()
+    if (player.last_resp == "elevation en cours\n"):
+        player.set_anim("Jump")
+    else:
+        player.walk()
+        r = randint(0, 2)
+        if (r == 1):
+            player.set_anim("Idle")
+            player.turn_left()
+            player.see_objects()
+        elif (r == 2):
+            player.set_anim("Idle")
+            player.turn_right()
+            player.get_inventory()
+        else:
+            player.walk()
+            player.set_anim("Walk")
+            player.get_object("nourriture")
+            player.get_object("linemate")
+
+def level2(player):
+    r = randint(0, 2)
+    if (r == 1):
+        player.turn_left()
+    elif (r == 2):
+        player.turn_right()
+    else:
+        player.walk()
+        player.get_object("nourriture")    
+        player.get_object("deraumere")
+        player.get_object("linemate")
+        player.get_object("sibur")
